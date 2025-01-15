@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Add favicon (optional) -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <!-- Rotating light effect -->
+    <div class="rotating-light"></div>
+    <div class="background-particles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="shooting-star"></div>
+    
+    <!-- QR Code Generator Container -->
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <form action="/generate" method="POST" id="qrForm">
+            <label for="data">Data:</label>
+            <input type="text" id="data" name="data" placeholder="Enter text or URL" required>
+        
+            <label for="size">Size (e.g., 200):</label>
+            <input type="number" id="size" name="size" min="50" max="1000" value="200" required>
+        
+            <label for="border">Border Size:</label>
+            <input type="number" id="border" name="border" min="1" max="10" value="4">
+        
+            <label for="color">Background Color:</label>
+            <input type="color" id="color" name="color" value="#ffffff">
+        
+            <button type="submit">Generate QR Code</button>
+        </form>
+
+        <!-- QR Code Display Area -->
+        <div id="qrcode" class="qrcode">
+            <div class="light"></div>
+        </div>
+        <div class="rotating-light"></div>
+    </div>
+    
+    <!-- External libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    
+    <!-- Your custom JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

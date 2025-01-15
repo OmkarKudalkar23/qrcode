@@ -1,0 +1,322 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('qrimg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    color: #fff;
+    position: relative; /* Required for pseudo-elements */
+}
+
+/* Add a moving gradient overlay */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 255, 0.3), rgba(255, 255, 255, 0.3), rgba(0, 255, 255, 0.3));
+    animation: gradientMove 8s infinite alternate;
+    mix-blend-mode: overlay; /* Blends gradient with the image */
+    z-index: -1;
+}
+
+/* Floating particles effect */
+.background-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background-particles span {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: rgba(27, 95, 196, 0.7);
+    box-shadow: 0 0 10px rgba(27, 95, 196, 0.7);
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out;
+    opacity: 0.6;
+}
+
+/* Randomly positioned particles */
+.background-particles span:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-duration: 4s;
+    animation-delay: 0s;
+}
+
+.background-particles span:nth-child(2) {
+    top: 40%;
+    left: 30%;
+    animation-duration: 5s;
+    animation-delay: 1s;
+}
+
+.background-particles span:nth-child(3) {
+    top: 60%;
+    left: 70%;
+    animation-duration: 6s;
+    animation-delay: 2s;
+}
+
+.background-particles span:nth-child(4) {
+    top: 80%;
+    left: 50%;
+    animation-duration: 7s;
+    animation-delay: 3s;
+}
+
+.background-particles span:nth-child(5) {
+    top: 15%;
+    left: 85%;
+    animation-duration: 8s;
+    animation-delay: 4s;
+}
+
+/* Keyframes for gradient animation */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Keyframes for floating particles */
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.2);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
+    animation: floatBackground 20s infinite linear;
+    z-index: -1;
+}
+
+@keyframes floatBackground {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Add this to your existing CSS */
+.container {
+    position: relative; /* Parent for positioning */
+    text-align: center;
+    background: rgba(20, 20, 60, 0.8); /* Dark bluish overlay with transparency */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+    animation: fadeIn 2s ease-out;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    overflow: hidden; /* Keeps the light effect inside */
+    color: #ffffff; /* Bright white text for contrast */
+}
+
+/* Add the moving light */
+.container .rotating-light {
+    position: absolute;
+    width: 150%; /* Slightly larger than the container for smoother flow */
+    height: 150%; /* Same as width */
+    top: -25%; /* Centered based on the larger size */
+    left: -25%;
+    border-radius: 50%; /* Circular light */
+    background: radial-gradient(circle, rgba(98, 130, 179, 0.3), transparent 70%);
+    animation: swirlLight 8s linear infinite; /* Smooth swirling motion */
+    pointer-events: none;
+    z-index: 1; /* Keeps it layered behind content */
+}
+
+/* Swirling motion for the light */
+@keyframes swirlLight {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1); /* Gentle expansion for a dynamic feel */
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #fffcfc;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+input[type="text"], input[type="number"], input[type="color"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: transform 0.3s ease, border 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #333;
+}
+
+input:focus {
+    outline: none;
+    transform: scale(1.05);
+    border-color: #007BFF;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+}
+
+button {
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s ease;
+    font-size: 1.2rem;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #0056b3, #003d7f);
+    transform: scale(1.1);
+}
+
+#qrcode {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: glowing-border 3s infinite alternate;
+}
+
+@keyframes glowing-border {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(0, 123, 255, 0.8);
+    }
+}
+
+@keyframes floatingLights {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.light {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    animation: floatingLights 3s ease-in-out infinite;
+    z-index: 1;
+}
+input[type="text"], input[type="number"], input[type="color"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid #aaa; /* Default border for visibility */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9); /* Brighter for better contrast */
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.3s ease; /* Smooth animations */
+}
+
+input:focus {
+    outline: none; /* Removes the default focus style */
+    transform: scale(1.05);
+    border-color: #00ffff; /* Bright border on focus */
+    background-color: rgba(240, 248, 255, 1); /* Subtle background change */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Glow effect */
+    z-index: 2; /* Ensure it’s above other elements */
+}
+
+
+.shooting-star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    animation: shootingStar 5s infinite ease-in-out;
+    border-radius: 50%;
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(100vw, 100vh) scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(200vw, 200vh) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Add the moving gradient overlay */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
